@@ -13,20 +13,16 @@ spec:
     metadata:
       labels:
         app: vprodb
-    spec:     
+    spec:
       containers:
-       - name: vprodb
-         image: omar0940/vprofiledb
- #     - args:
- #     - "--ignore-db-dir=lost+found"
-      resources:
-        limits:
-        - default:
-          memory: "128Mi"
-          cpu: "250m"
+      - name: vprodb
+        image: vprofile/vprofiledb
+          #args:
+          #- "--ignore-db-dir"
+          #- "lost+found"
         volumeMounts:
-        - name: vpro-db-data
-          mountPath: /var/lib/mysql
+        - mountPath: /var/lib/mysql
+          name: vpro-db-data
         ports:
         - name: vprodb-port
           containerPort: 3306
@@ -40,9 +36,10 @@ spec:
         zone: us-east-1a
       volumes:
         - name: vpro-db-data
+          # This AWS EBS volume must already exist.
           awsElasticBlockStore:
-            volumeID: vol-03e7b275d9c5a6827
-            fsType: ext4
+             volumeID: MentiondVoumeID
+             fsType: ext4
 
       initContainers:
         - name: busybox
@@ -51,4 +48,3 @@ spec:
           volumeMounts:
             - name: vpro-db-data
               mountPath: /var/lib/mysql
-            
