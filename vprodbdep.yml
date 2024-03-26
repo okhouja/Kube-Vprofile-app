@@ -19,10 +19,10 @@ spec:
          image: omar0940/vprofiledb
          # - args:
          # - "--ignore-db-dir=lost+found"
-         resources:
-           limits:
-             memory: "128Mi"
-             cpu: "250m"
+        #  resources:
+        #    limits:
+        #      memory: "128Mi"
+        #      cpu: "250m"
          volumeMounts:
          - name: vpro-db-data
            mountPath: /var/lib/mysql
