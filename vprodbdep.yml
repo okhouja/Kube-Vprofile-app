@@ -17,12 +17,10 @@ spec:
       containers:
        - name: vprodb
          image: omar0940/vprofiledb
-         # - args:
-         # - "--ignore-db-dir=lost+found"
-        #  resources:
-        #    limits:
-        #      memory: "128Mi"
-        #      cpu: "250m"
+         resources:
+           limits:
+             memory: "1024Mi"
+             cpu: "1000m"
          volumeMounts:
          - mountPath: /var/lib/mysql
            name: vpro-db-data
@@ -40,7 +38,7 @@ spec:
       volumes:
         - name: vpro-db-data
           awsElasticBlockStore:
-            volumeID: vol-03e7b275d9c5a6827
+            volumeID: vol-086528fcc7a0f9cac
             fsType: ext4
 
       initContainers:
