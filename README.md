@@ -14,7 +14,7 @@
      --node-volume-size=8 --control-plane-volume-size=8**
 6. run this command to Edit config file :
    **kops edit cluster --name kubevpro.okdeops.de --state s3://vprofile-kops-state-3**
-7. edit these lines to change the ETCD Volume on Master Node (**Control Plane Node**) and Work Node like this: 
+7. edit these lines to change the ETCD Volume from 20 GB to 8 GB on Master Node (**Control Plane Node**) and Work Node to be like this: 
 
     #### etcdClusters:
     - etcdMembers:
@@ -26,13 +26,13 @@
     
 8. create the Resourses (*Control Plane Node & 2 Work Nodes & Security Group & Auto Scaling Group*) on AWS with command:
    **kops update cluster --name kubevpro.okdeops.de --state=s3://vprofile-kops-state-3 --yes --admin**
-9. wait about 10 min and Validate the Resourses to be Ready with this command:
+9. wait about **10 min** and Validate the Resourses to be Ready with this command:
    **kops validate cluster --name kubevpro.okdeops.de --state=s3://vprofile-kops-state-3**
 10. Create a Volume for DB with command:
    **aws ec2 create-volume --availability-zone us-east-1a --size 3 --volume-type gp3 --tag-specifications 'ResourceType=volume,Tags=[{Key=KubernetesCluster,Value=kubevpro.okdeops.de}]'**
 11. change the Label of worker nodes :
-   **kubectl label node i-instanceID zone=us-east-1b**
-   **kubectl label node i-instanceID zone=us-east-1a**
+  - **kubectl label node i-instanceID zone=us-east-1b**
+  - **kubectl label node i-instanceID zone=us-east-1a**
 12. create the Project after a pull from github to Kops instace :
    **kubectl create -f .**
 13. after you finished delete everything : 
