@@ -17,10 +17,10 @@ spec:
       containers:
        - name: vproapp
          image: omar0940/vprofileapp
-        #  resources:
-        #    limits:
-        #      memory: "256 Mi"
-        #      cpu: "256m"
+         resources:
+           limits:
+             memory: "256 Mi"
+             cpu: "256m"
          ports:
          - name: vproapp-port
            containerPort: 8080
