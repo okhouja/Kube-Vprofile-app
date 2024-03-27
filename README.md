@@ -3,8 +3,8 @@
 ## Test Project with Kubernetes using KOPS on EC2 
 
 ### Configuration
-1. create S3 bucket (s3://vprofile-kops-state-3 )
-2. create DNS registry on Route 53 (kubevpro.okdeops.de) (I had 4 DNS Records)
+1. create S3 bucket (example: **s3://vprofile-kops-state-3** )
+2. create DNS registry on Route 53 (**kubevpro.okdeops.de**) (I had 4 DNS Records)
 3. create 4 NS Record DNS on Domain resgisty
 4. create EC2 instance t2.micro is enough to install KOPS with SSH
 5. run this Command on KOPS instance : 
