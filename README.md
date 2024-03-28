@@ -33,7 +33,7 @@
 11. change the Label of worker nodes :
   - **kubectl label node i-instanceID zone=us-east-1b**
   - **kubectl label node i-instanceID zone=us-east-1a**
-12. create the Project after a pull from github to Kops instace :
+12. create the Project after a pull from github to Kops instance :
    **kubectl create -f .**
 13. after you finished delete everything : 
    **kubectl delete -f .**
