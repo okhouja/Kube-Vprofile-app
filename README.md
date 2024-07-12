@@ -11,7 +11,7 @@
    - **kops create cluster --name=kubevpro.okdeops.de \
      --state=s3://vprofile-kops-state-3 --zones=us-east-1a,us-east-1b \
      --node-count=2 --node-size=t2.small --master-size=t2.medium --dns-zone=kubevpro.okdeops.de \
-     --node-volume-size=8 --control-plane-volume-size=8**
+     --node-volume-size=8 --control-plane-volume-size=10**
 6. run this command to Edit config file :
    **kops edit cluster --name kubevpro.okdeops.de --state s3://vprofile-kops-state-3**
 7. edit these lines to change the ETCD Volume from 20 GB to 8 GB on Master Node (**Control Plane Node**) and Work Node to be like this: 
